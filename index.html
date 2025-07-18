@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aegis Anti-Spam | Real-Time AI Email Protection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #4F46E5, #EC4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #result-card.spam {
+            border-color: #F43F5E; /* rose-500 */
+        }
+        #result-card.ham {
+            border-color: #34D399; /* emerald-400 */
+        }
+        /* Wave Glowing Text Effect for Try It Live Button */
+        .wave-glow {
+            position: relative;
+            background: linear-gradient(90deg, #f43f5e, #a21caf, #f43f5e, #f59e42);
+            background-size: 400% 100%;
+            animation: wave-gradient 3s linear infinite, glow 1.5s ease-in-out infinite alternate;
+            box-shadow: 0 0 16px 4px #f43f5e80, 0 0 32px 8px #a21caf40;
+            text-shadow: 0 0 8px #fff, 0 0 16px #f43f5e;
+        }
+        @keyframes wave-gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 16px 4px #f43f5e80, 0 0 32px 8px #a21caf40; }
+            100% { box-shadow: 0 0 32px 8px #f43f5e, 0 0 64px 16px #a21caf; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 glass-card">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="text-xl font-bold tracking-wider">
+                <span class="gradient-text">AEGIS</span>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#demo" class="hover:text-indigo-400 transition-colors">Live Demo</a>
+                <a href="#features" class="hover:text-indigo-400 transition-colors">Features</a>
+                <a href="#tech" class="hover:text-indigo-400 transition-colors">Technology</a>
+            </nav>
+            <a href="https://github.com/your-username/realtime-anti-spam-system" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                View on GitHub
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="pt-24">
+        <section class="container mx-auto text-center py-20 px-6">
+            <h1 class="text-5xl md:text-7xl font-black mb-4">
+                Proactive <span class="gradient-text">AI-Powered</span> Email Security
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                A multi-layered, server-side system that detects and neutralizes spam, phishing, and malware in real-time before they reach the inbox.
+            </p>
+            <a href="#demo" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors wave-glow">
+                Try It Live
+            </a>
+        </section>
+
+        <!-- Live Demo Section -->
+        <section id="demo" class="py-20">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-4xl font-bold text-center mb-12">Try the AI Engine</h2>
+                <div class="glass-card p-8 rounded-xl">
+                    <p class="text-gray-400 mb-4">Paste the body of an email below to get a real-time analysis from the API.</p>
+                    <textarea id="email-input" class="w-full h-48 p-4 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-shadow" placeholder="Example: Congratulations! You've been selected to claim a free prize. Click here to verify your details..."></textarea>
+                    <button id="analyze-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all mt-4">
+                        Analyze
+                    </button>
+                    <div id="result-container" class="mt-6 hidden">
+                        <h3 class="text-xl font-bold mb-2">Analysis Result:</h3>
+                        <div id="result-card" class="p-6 rounded-lg border-2">
+                            <p class="text-2xl font-bold mb-2" id="result-verdict"></p>
+                            <p class="text-gray-400" id="result-reason"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 bg-gray-800/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Why Aegis is Different</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-xl text-center">
+                        <div class="text-4xl mb-4">☁️</div>
+                        <h3 class="text-2xl font-bold mb-2">LLM-Powered Analysis</h3>
+                        <p class="text-gray-400">Leverages the API for deep contextual understanding of email content, catching sophisticated scams that other systems miss.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-xl text-center">
+                        <div class="text-4xl mb-4">🧠</div>
+                        <h3 class="text-2xl font-bold mb-2">Heuristic Engine</h3>
+                        <p class="text-gray-400">Scores emails based on patterns of deception, such as brand impersonation, urgency, and suspicious domain structures.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-xl text-center">
+                        <div class="text-4xl mb-4">🌐</div>
+                        <h3 class="text-2xl font-bold mb-2">Live Threat Intelligence</h3>
+                        <p class="text-gray-400">A dedicated background service continuously updates a live reputation database from global threat feeds, blocking new threats proactively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Stack -->
+        <section id="tech" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Technology Stack</h2>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" class="h-10">
+                    <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" class="h-10">
+                    <img src="https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white" alt="RabbitMQ" class="h-10">
+                    <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white" alt="Redis" class="h-10">
+                    <img src="https://img.shields.io/badge/docker-%230db7ed.svg?&style=for-the-badge&logo=docker&logoColor=white" alt="Docker" class="h-10">
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20 bg-gray-800/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">System Architecture</h2>
+                <div class="bg-gray-900 p-6 rounded-lg font-mono text-sm text-gray-400 overflow-x-auto">
+<pre>
+                               +-----------------------------+
+[Threat Feeds, Blogs, APIs]--->| Threat Intel Ingestion Svc. |
+                               +-----------------------------+
+                                             | (writes to)
+                                             v
+                                     +---------------+
+                                     | Redis DB      | (Live Reputation)
+                                     +---------------+
+                                             ^
+                                             | (reads from)
+                                             |
+[Incoming Email]--->[Ingestion API]--->[Queue]--->[Enterprise AI Worker]
+</pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 mt-20">
+        <div class="container mx-auto text-center p-6 text-gray-500">
+            <p>Built as a demonstration of a modern, real-time security architecture.</p>
+            <p>&copy; 2025 - BPeekay</p>
+        </div>
+    </footer>
+
+    <script>
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const emailInput = document.getElementById('email-input');
+        const resultContainer = document.getElementById('result-container');
+        const resultCard = document.getElementById('result-card');
+        const resultVerdict = document.getElementById('result-verdict');
+        const resultReason = document.getElementById('result-reason');
+
+        // --- IMPORTANT: Paste your Gemini API Key here ---
+        const apiKey = "AIzaSyBJ_ZRB88ZUdrou08acRDtytEeVmupyFPc"; // <<< PASTE YOUR API KEY HERE
+
+        analyzeBtn.addEventListener('click', async () => {
+            const emailContent = emailInput.value;
+            if (!emailContent.trim()) {
+                alert('Please enter some email content to analyze.');
+                return;
+            }
+            if (!apiKey) {
+                alert('API Key is not configured in the script. The demo cannot run.');
+                return;
+            }
+
+            analyzeBtn.disabled = true;
+            analyzeBtn.textContent = 'Analyzing...';
+            resultContainer.classList.add('hidden');
+
+            const prompt = `
+                You are an expert spam and phishing detection analyst.
+                Analyze the following email content and determine if it is 'spam' or 'ham' (legitimate).
+                Provide a brief, one-sentence reason for your decision.
+                Your response must be a JSON object with two keys: "verdict" and "reason".
+
+                Email Content: "${emailContent}"
+
+                JSON Response:
+            `;
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{
+                    parts: [{ "text": prompt }]
+                }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const content_part = result.candidates[0].content.parts[0].text;
+                const cleaned_json_str = content_part.trim().replace(/```json/g, '').replace(/```/g, '');
+                const llmResponse = JSON.parse(cleaned_json_str);
+
+                displayResult(llmResponse.verdict, llmResponse.reason);
+
+            } catch (error) {
+                console.error('Error:', error);
+                displayResult('Error', 'Could not get a valid response from the AI. Please check the console for details.');
+            } finally {
+                analyzeBtn.disabled = false;
+                analyzeBtn.textContent = 'Analyze';
+            }
+        });
+
+        function displayResult(verdict, reason) {
+            resultContainer.classList.remove('hidden');
+            const isSpam = verdict.toLowerCase() === 'spam';
+            
+            resultVerdict.textContent = isSpam ? 'Verdict: Spam' : 'Verdict: Ham (Legitimate)';
+            resultReason.textContent = `Reason: ${reason}`;
+
+            resultCard.classList.remove('spam', 'ham');
+            resultCard.classList.add(isSpam ? 'spam' : 'ham');
+            
+            resultVerdict.classList.remove('text-rose-500', 'text-emerald-400');
+            resultVerdict.classList.add(isSpam ? 'text-rose-500' : 'text-emerald-400');
+        }
+    </script>
+
+</body>
+</html>
