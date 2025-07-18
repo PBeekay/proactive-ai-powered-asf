@@ -27,7 +27,7 @@ def analyze_with_llm(content_to_analyze: str):
     """Analyzes content using the Gemini API for deep contextual understanding."""
     print("     [LLM] Calling Gemini API for analysis...")
     
-    apiKey = "AIzaSyBJ_ZRB88ZUdrou08acRDtytEeVmupyFPc" # Your API Key
+    apiKey = "" # Your API Key
 
     if not apiKey:
         print("     [!] FATAL: Gemini API key is missing.")
