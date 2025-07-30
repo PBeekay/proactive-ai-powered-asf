@@ -9,18 +9,11 @@ from redis.exceptions import ConnectionError
 
 # --- 2. Configuration ---
 
-# The Redis key where we store our blocklisted domains.
-# This MUST match the key used in our AI worker.
-BLOCKLIST_KEY = "spam_keywords" # Note: We'll use the same key as Project 3 for simplicity
-
-# List of URLs for threat intelligence feeds. These are plain text files.
-# We're using a popular list of phishing domains as our source.
+BLOCKLIST_KEY = "spam_keywords" 
 THREAT_FEEDS = [
     "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt"
 ]
 
-# How often to check for new intelligence (in seconds).
-# 1800 seconds = 30 minutes.
 UPDATE_INTERVAL = 1800
 
 # --- 3. Setup Redis Connection ---
@@ -67,10 +60,7 @@ def update_reputation_database():
         print("[*] No new threats found in this cycle.")
         return
 
-    # Use a Redis pipeline for efficiency. It sends all commands to the server at once.
     pipeline = redis_client.pipeline()
-    # SADD adds all items from our set into the Redis set.
-    # Redis automatically handles duplicates, so we don't add the same domain twice.
     pipeline.sadd(BLOCKLIST_KEY, *all_new_threats)
     
     # Execute the pipeline
