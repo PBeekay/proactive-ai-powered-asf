@@ -15,12 +15,9 @@ app = FastAPI()
 def send_to_queue(message_body: str):
     """Connects to RabbitMQ and sends a message."""
     try:
-        # Connect to the RabbitMQ server running on our machine
         connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
         channel = connection.channel()
 
-        # Declare a queue named 'task_queue'. This will create it if it doesn't exist.
-        # 'durable=True' means the queue will survive if RabbitMQ restarts.
         channel.queue_declare(queue='task_queue', durable=True)
 
         # Publish the message to the queue
