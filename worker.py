@@ -1,6 +1,3 @@
-# worker.py (Final Combined Version with Proxy)
-
-# --- 1. Import libraries ---
 import pika
 import time
 import json
@@ -19,7 +16,6 @@ except ConnectionError as e:
     print(f"[!] Could not connect to Redis. Please ensure it's running. Error: {e}")
     exit()
 
-# This is the key our threat intel worker uses to store the blocklist.
 BLOCKLIST_KEY = "spam_keywords" 
 
 # --- 3. Create the function to call the Gemini API ---
